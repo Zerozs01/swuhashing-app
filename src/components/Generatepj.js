@@ -16,31 +16,30 @@ function Generatepj() {
                             <div className="card-body p-0">
                                 <div className="d-flex align-items-center">
                                     <div className="p-5">
-                                        <h2 className="fw-bolder">
-                                            <nav className="navbar navbar-expand-sm navbar-light bg-white ">
-                                                <div className="container px-5">
-                                                    <div className="collapse navbar-collapse" id="navbarSupportedContent">
-                                                        <ul className="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-
-                                                            <li className="nav-item dropdown">
-                                                                <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                                SHA TYPE
-                                                            </a>
-                                                                <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                                    <li><a className="dropdown-item" href="https://codebeautify.org/md5-hash-generator" target="blank">MD5</a></li>
-                                                                    <li><a className="dropdown-item" href="https://codebeautify.org/sha1-hash-generator" target="blank">SHA-1</a></li>
-                                                                    <li><a className="dropdown-item" href="https://codebeautify.org/sha256-hash-generator" target="blank">SHA-256</a></li>
-                                                                    <li><a className="dropdown-item" href="https://codebeautify.org/sha512-hash-generator" target="blank">SHA-512</a></li>
-
-
-                                                                </ul>
-                                                            </li>
-
-                                                        </ul>
-                                                    </div>
-                                                </div>
-                                            </nav>
-                                        </h2>
+                                    <h2 className="fw-bolder">
+    <nav className="navbar navbar-expand-sm navbar-light bg-white">
+        <div className="container px-5">
+            <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive">
+                <span className="navbar-toggler-icon"></span>
+            </button>
+            <div className="collapse navbar-collapse" id="navbarResponsive">
+                <ul className="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
+                    <li className="nav-item dropdown">
+                        <a className="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            SHA TYPE
+                        </a>
+                        <ul className="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a className="dropdown-item" href="https://codebeautify.org/md5-hash-generator">MD5</a></li>
+                            <li><a className="dropdown-item" href="https://codebeautify.org/sha1-hash-generator">SHA-1</a></li>
+                            <li><a className="dropdown-item" href="https://codebeautify.org/sha256-hash-generator">SHA-256</a></li>
+                            <li><a className="dropdown-item" href="https://codebeautify.org/sha512-hash-generator">SHA-512</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+</h2>
 
                                         <form id="contactForm" data-sb-form-api-token="API_TOKEN">
 
