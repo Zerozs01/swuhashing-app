@@ -11,11 +11,11 @@ function Header() {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
-                        <li className="nav-item active d-inline"><a className="nav-link text-light " href="index.html">Home</a></li>
+                        
                        
-                        <li className="nav-item"><Link to ="/Home"className="nav-link">Home</Link></li>
+                        <li className="nav-item"><Link to ="/"className="nav-link">Home</Link></li>
                         <li className="nav-item"><Link to ="/Generate"className="nav-link">Generate</Link></li>
-                        <li className="nav-item"><Link to ="/Investigate" className="nav-link">Investigate1</Link></li>
+                        <li className="nav-item"><Link to ="/Investigate" className="nav-link">Investigate</Link></li>
                         <li className="nav-item"><Link to ="/Login" className="nav-link">Login</Link></li>
                         
                       
