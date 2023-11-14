@@ -7,7 +7,7 @@ function Header() {
     <main className="flex-shrink-0">
       <nav className="navbar mr-auto navbar-light bg-white py-3">
             <div className="container px-5 navbar-expand-lg">
-                <a className="navbar-brand" href="index.html"><span className="fw-bolder text-logo">HASHING PORTAL</span></a>
+            <Link to ="/"className="nav-link"><span className="fw-bolder text-logo">HASHING PORTAL</span></Link>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span className="navbar-toggler-icon"></span></button>
                 <div className="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul className="navbar-nav ms-auto mb-2 mb-lg-0 small fw-bolder">
@@ -36,8 +36,9 @@ function Header() {
                          <div className="fs-3 fw-light text-muted">Select your option you want to use</div>
                          <h1 className="display-3 fw-bolder mb-5"><span className="text-gradient d-inline">Generate or Investigate<i className="bi bi-file-earmark-lock"></i></span></h1>
                          <div className="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xxl mb-3 text-white">
-                             <a className="btn btn-logo btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder " href="generate.html">GENERATE</a>
-                             <a className="btn btn-outline-light  btn-lg px-5 py-3 fs-6 fw-bolder" href="investigate.html">INVESTIGATE</a>
+                             <Link to ="/Generate"className="btn btn-logo btn-lg px-5 py-3 me-sm-3 fs-6 fw-bolder">GENERATE</Link>
+                             <Link to ="/Investigate" className="btn btn-outline-light  btn-lg px-5 py-3 fs-6 fw-bolder">INVESTIGATE</Link>
+                            
                          </div>
                      </div>
                  </div>
