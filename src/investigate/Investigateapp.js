@@ -2,7 +2,7 @@ import Header from'./Header'
 import About from'./About'
 import Footer from'./Footer'
 import React from 'react';
-function App() {
+function Investigateapp() {
     return (<>
              <Header />
              <About />
@@ -11,4 +11,4 @@ function App() {
     </> );
     }
 
-    export default App;
+    export default Investigateapp;
