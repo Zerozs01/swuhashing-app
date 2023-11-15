@@ -6,7 +6,7 @@ function Footer() {
         <div className="container px-5">
             <div className="row align-items-center justify-content-between flex-column flex-sm-row">
                 <div className="col-auto">
-                    <div className="small m-0">Copyright &copy; CPE Y1 TEAM8</div>
+                    <div className="small m-0">CREATE BY: &copy; CPE Y1 TEAM8</div>
 
                 </div>
                 <div className="col-auto">

@@ -30,18 +30,19 @@ function Investigate1() {
                                 </div>
                                 <div className="col mb-4 mb-md-0">
                                     <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100">CSS</div>
-                                </div>
-                                <div className="col">
-                                    <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div>
-                                </div>
+                                </div><br></br>
+                               
                             </div>
                             <div className="row row-cols-1 row-cols-md-3">
+                            <div className="col">
+                                    <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100">JavaScript</div>
+                                </div>
                                 <div className="col mb-4 mb-md-0">
                                     <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100">Php</div>
                                 </div>
 
                             </div>
-                            
+                            <hr></hr>
                            {/* Professional skills list*/}
                             <div className="mb-0">
                                 <div className="d-flex align-items-center mb-4">
@@ -50,21 +51,22 @@ function Investigate1() {
                                 </div>
                                 <div className="row row-cols-1 row-cols-md-3 mb-4">
                                     <div className="col mb-4 mb-md-0">
-                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient ">(J)ผู้ทดสอบระบบ66109010180</div>
+                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient ">(J)<br></br>ผู้ทดสอบระบบ<br></br>66109010180</div>
                                     </div>
                                     <div className="col mb-4 mb-md-0">
-                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient">(Win)Graphic Design66109010201</div>
+                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient">(Win)<br></br>Graphic Design<br></br>66109010201</div>
                                     </div>
-                                    <div className="col">
-                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient">(Au)Coding66109010322</div>
+                                    <div className="col  mb-4 mb-md-0">
+                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient">(Au)<br></br>Coding<br></br>66109010322</div>
                                     </div>
                                 </div>
                                 <div className="row row-cols-1 row-cols-md-3">
                                     <div className="col mb-4 mb-md-0">
-                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient">(Tarit)Stuckture design66109010449</div>
+                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient">(Tarit)<br></br>Stuckture <br></br>design<br></br>66109010449</div>
                                     </div>
                                     <div className="col mb-4 mb-md-0">
-                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient"> (Pond)Research-inhtmlFormation66109010455</div>
+                                        <div className="d-flex align-items-center bg-light rounded-4 p-3 h-100 text-gradient"> (Pond)<br></br>Research<br></br> Information<br></br> 66109010455</div>
+                                        <br></br>
                                     </div>
 
                                 </div>
