@@ -19,10 +19,10 @@ export default function HashingForm() {
 
         if (inputNumber === 1) {
             setTextInput(value);
-            setOutput(result);
+            setOutput(value ? result : '');
         } else if (inputNumber === 2) {
             setTextInput2(value);
-            setOutput2(result);
+            setOutput2(value ? result : '');
         }
     }
 
@@ -58,10 +58,10 @@ export default function HashingForm() {
         let result = await hashValue(getInputValue(1), value);
 
         setAlgorithm(value);
-        setOutput(result);
+        setOutput(value ? result : '');
 
         result = await hashValue(getInputValue(2), value);
-        setOutput2(result);
+        setOutput2(value ? result : '');
     }
 
     const getInputValue = (inputNumber) => {
