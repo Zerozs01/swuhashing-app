@@ -29,7 +29,7 @@
 }
 
 .hashing-algorithms .hashing-algorithms-list {
-    display: inlin-flex;
+    display: inline-block;
     justify-content: space-between;
    
   

@@ -3,10 +3,10 @@ import React from 'react'
 function Investigate1() {
   return (
     <>
-    <div className="container px-5 my-5">
+    <div className=" px-1 my-5">
  
-    <div className="row gx-5 justify-content-center">
-        <div className="col-lg-11 col-xl-9 col-xxl-8">
+    <div className="row  justify-content-center">
+        <div className="  col-xxl-10">
             
            {/* Experience Section*/}
           
