@@ -1,9 +1,11 @@
 import React from 'react'
 import Header from'../components/Header'
 import Footer from'../components/Footer'
+import Signin from'../components/Signin'
 function Login() {
   return (
     <> <Header></Header>
+    <Signin />
     <section className="py-5">
             <div className="container px-5">
                {/* Contact htmlForm*/}

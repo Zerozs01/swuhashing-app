@@ -187,7 +187,7 @@ export default function HashingForm() {
           </div>
 
           <div className="hashed-output ">
-            <h4 className="hashed-algorithm-heading text-gradient">Output</h4>
+            <h4 className="hashed-algorithm-heading  text-light">Output</h4>
             <div className="hashed-algorithm-container">
               <p className="hashed-algorithm-text ">{output}</p>
             </div>
