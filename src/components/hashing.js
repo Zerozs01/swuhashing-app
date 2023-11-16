@@ -6,6 +6,7 @@ export default function HashingForm() {
   const [algorithms] = useState(['sha1', 'sha256', 'sha384', 'sha512']);
   const [text_input, setTextInput] = useState('');
   const [file_input, setFileInput] = useState('');
+  const [defaultFileInput, setDefaultFileInput] = useState('');
   const [algorithm, setAlgorithm] = useState('sha1');
   const [output, setOutput] = useState('');
 
@@ -13,13 +14,10 @@ export default function HashingForm() {
     const hashInput = async () => {
       let result = '';
 
-      // Check if both text and file inputs are empty
       if (!text_input && !file_input) {
-        result = ''; // Set the output to an empty string
+        result = '';
       } else {
-        // Check if we have a text input
         if (text_input) {
-          // Hash the text based on the selected algorithm
           if (algorithm === 'sha1') {
             result = await sha1(text_input);
           } else if (algorithm === 'sha256') {
@@ -31,9 +29,7 @@ export default function HashingForm() {
           }
         }
 
-        // Check if we have a file input
         if (file_input) {
-          // Hash the file content based on the selected algorithm
           if (algorithm === 'sha1') {
             result = await sha1(file_input);
           } else if (algorithm === 'sha256') {
@@ -46,8 +42,7 @@ export default function HashingForm() {
         }
       }
 
-      // Set the hashed text
-      setOutput(result || ''); // Set to an empty string if result is falsy
+      setOutput(result || '');
     };
 
     hashInput();
@@ -55,7 +50,6 @@ export default function HashingForm() {
 
   const handleTextInput = async (e) => {
     let value = e.target.value;
-
     let result = '';
 
     if (algorithm === 'sha1') {
@@ -90,14 +84,15 @@ export default function HashingForm() {
 
       setOutput(result);
       setFileInput(fr.result);
+      setDefaultFileInput('');
     };
 
     fr.readAsText(e.target.files[0]);
+    setOutput('');
   };
 
   const handleAlgorithmChange = async (e) => {
     let value = e.target.value;
-
     let result = '';
 
     if (!text_input && !file_input) {
@@ -132,6 +127,18 @@ export default function HashingForm() {
     setOutput(result || '');
   };
 
+  const clearFileInput = () => {
+    setFileInput('');
+    setOutput('');
+    setDefaultFileInput('');
+
+    // Clear the file input value
+    const fileInput = document.getElementById('file-input');
+    if (fileInput) {
+      fileInput.value = '';
+    }
+  };
+
   return (
     <section className="x-5 ">
       <div className="hashing-container text-light px-1 mb-1 ">
@@ -157,7 +164,16 @@ export default function HashingForm() {
               </div>
               <div className="form-group">
                 <label htmlFor="file-input">File Input</label>
-                <input type="file" className="form-control y-5" id="file-input" onChange={handleFileInput} />
+                <input
+                  type="file"
+                  className="form-control y-5"
+                  id="file-input"
+                  onChange={handleFileInput}
+                  defaultValue={defaultFileInput}
+                />
+                <button type="button" className="btn-gradient text-light y-5" onClick={clearFileInput}>
+                  Clear File
+                </button>
               </div>
             </form>
           </div>

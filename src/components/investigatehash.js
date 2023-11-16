@@ -101,8 +101,8 @@ export default function HashingForm() {
     }
 
     return (
-        <section className="x-5 mt-4"><br></br>
-            <div className='hashing-container text-light px-1 mb-1 mt-1 '>
+        <section className="x-5 mt-6 col-xxl"><br></br>
+            <div className='hashing-container text-light px-1 mb-1 '>
                 <div className='hashing-content'>
                     <div className="text-center py-8">
                         <h2 className="display-1 fw-bolder mb-1 y-5"><span className="text-gradient d-inline bg-light">Investigate</span></h2>
