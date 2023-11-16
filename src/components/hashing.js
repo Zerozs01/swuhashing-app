@@ -1,44 +1,30 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { sha1, sha256, sha384, sha512 } from 'crypto-hash';
 import './hashing.css';
 
 export default function HashingForm() {
   const [algorithms] = useState(['sha1', 'sha256', 'sha384', 'sha512']);
-  const [text_input, setTextInput] = useState('');
-  const [file_input, setFileInput] = useState('');
+  const [textInput, setTextInput] = useState('');
+  const [fileInput, setFileInput] = useState('');
   const [defaultFileInput, setDefaultFileInput] = useState('');
   const [algorithm, setAlgorithm] = useState('sha1');
   const [output, setOutput] = useState('');
+
+  const fileInputRef = useRef(null); // Ref for file input
 
   useEffect(() => {
     const hashInput = async () => {
       let result = '';
 
-      if (!text_input && !file_input) {
+      if (!textInput && !fileInput) {
         result = '';
       } else {
-        if (text_input) {
-          if (algorithm === 'sha1') {
-            result = await sha1(text_input);
-          } else if (algorithm === 'sha256') {
-            result = await sha256(text_input);
-          } else if (algorithm === 'sha384') {
-            result = await sha384(text_input);
-          } else if (algorithm === 'sha512') {
-            result = await sha512(text_input);
-          }
+        if (textInput) {
+          result = await hashText(textInput, algorithm);
         }
 
-        if (file_input) {
-          if (algorithm === 'sha1') {
-            result = await sha1(file_input);
-          } else if (algorithm === 'sha256') {
-            result = await sha256(file_input);
-          } else if (algorithm === 'sha384') {
-            result = await sha384(file_input);
-          } else if (algorithm === 'sha512') {
-            result = await sha512(file_input);
-          }
+        if (fileInput) {
+          result = await hashFileContent(fileInput, algorithm);
         }
       }
 
@@ -46,80 +32,50 @@ export default function HashingForm() {
     };
 
     hashInput();
-  }, [text_input, file_input, algorithm]);
+  }, [textInput, fileInput, algorithm]);
 
   const handleTextInput = async (e) => {
-    let value = e.target.value;
-    let result = '';
-
-    if (algorithm === 'sha1') {
-      result = await sha1(value);
-    } else if (algorithm === 'sha256') {
-      result = await sha256(value);
-    } else if (algorithm === 'sha384') {
-      result = await sha384(value);
-    } else if (algorithm === 'sha512') {
-      result = await sha512(value);
-    }
+    const value = e.target.value;
+    const result = await hashText(value, algorithm);
 
     setOutput(result || '');
     setTextInput(value);
+    setFileInput('');
+    setDefaultFileInput(''); // Clear defaultFileInput when new text is entered
+
+    // Check if there's a file input value, and clear it
+    if (fileInputRef.current && fileInputRef.current.value) {
+      fileInputRef.current.value = '';
+    }
   };
 
   const handleFileInput = (e) => {
     const fr = new FileReader();
 
     fr.onload = async () => {
-      let result = '';
-
-      if (algorithm === 'sha1') {
-        result = await sha1(fr.result);
-      } else if (algorithm === 'sha256') {
-        result = await sha256(fr.result);
-      } else if (algorithm === 'sha384') {
-        result = await sha384(fr.result);
-      } else if (algorithm === 'sha512') {
-        result = await sha512(fr.result);
-      }
-
+      const result = await hashFileContent(fr.result, algorithm);
       setOutput(result);
       setFileInput(fr.result);
-      setDefaultFileInput('');
+      setDefaultFileInput(''); // Clear defaultFileInput when a new file is selected
+      setTextInput('');
     };
 
     fr.readAsText(e.target.files[0]);
-    setOutput('');
   };
 
   const handleAlgorithmChange = async (e) => {
-    let value = e.target.value;
+    const value = e.target.value;
     let result = '';
 
-    if (!text_input && !file_input) {
+    if (!textInput && !fileInput) {
       result = '';
     } else {
-      if (text_input) {
-        if (value === 'sha1') {
-          result = await sha1(text_input);
-        } else if (value === 'sha256') {
-          result = await sha256(text_input);
-        } else if (value === 'sha384') {
-          result = await sha384(text_input);
-        } else if (value === 'sha512') {
-          result = await sha512(text_input);
-        }
+      if (textInput) {
+        result = await hashText(textInput, value);
       }
 
-      if (file_input) {
-        if (value === 'sha1') {
-          result = await sha1(file_input);
-        } else if (value === 'sha256') {
-          result = await sha256(file_input);
-        } else if (value === 'sha384') {
-          result = await sha384(file_input);
-        } else if (value === 'sha512') {
-          result = await sha512(file_input);
-        }
+      if (fileInput) {
+        result = await hashFileContent(fileInput, value);
       }
     }
 
@@ -128,14 +84,43 @@ export default function HashingForm() {
   };
 
   const clearFileInput = () => {
+    // Clear file input by setting its value to an empty string
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
     setFileInput('');
     setOutput('');
     setDefaultFileInput('');
+    setTextInput('');
+  };
 
-    // Clear the file input value
-    const fileInput = document.getElementById('file-input');
-    if (fileInput) {
-      fileInput.value = '';
+  const hashText = async (text, algo) => {
+    switch (algo) {
+      case 'sha1':
+        return await sha1(text);
+      case 'sha256':
+        return await sha256(text);
+      case 'sha384':
+        return await sha384(text);
+      case 'sha512':
+        return await sha512(text);
+      default:
+        return '';
+    }
+  };
+
+  const hashFileContent = async (content, algo) => {
+    switch (algo) {
+      case 'sha1':
+        return await sha1(content);
+      case 'sha256':
+        return await sha256(content);
+      case 'sha384':
+        return await sha384(content);
+      case 'sha512':
+        return await sha512(content);
+      default:
+        return '';
     }
   };
 
@@ -158,7 +143,7 @@ export default function HashingForm() {
                   className="form-control y-5"
                   id="text-input"
                   placeholder="Write some text"
-                  value={text_input}
+                  value={textInput}
                   onChange={handleTextInput}
                 />
               </div>
@@ -170,6 +155,7 @@ export default function HashingForm() {
                   id="file-input"
                   onChange={handleFileInput}
                   defaultValue={defaultFileInput}
+                  ref={fileInputRef}
                 />
                 <button type="button" className="btn-gradient text-light y-5" onClick={clearFileInput}>
                   Clear File
