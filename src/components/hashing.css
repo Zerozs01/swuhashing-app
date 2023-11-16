@@ -45,3 +45,13 @@
     word-wrap: break-word;
     width: 90%;
 }
+.hashed-algorithm-heading{   background: linear-gradient(135deg,  #1E80F3 10%, #e21e80 90%);
+    text-align: center;
+
+}
+.hashing-algorithms-heading{
+    background: linear-gradient(1deg,  #9bdaf9, #f370eb);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+}

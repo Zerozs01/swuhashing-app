@@ -165,7 +165,7 @@ export default function HashingForm() {
           </div>
 
           <div className="hashing-algorithms">
-            <h4 className="hashing-algorithms-heading text-gradient">Algorithms</h4>
+            <h4 className="hashing-algorithms-heading text-gradient">Algorithms<i className="bi bi-gear "></i></h4>
             <div className="hashing-algorithms-list">
               {algorithms.map((algo) => (
                 <div className="form-check y-5" key={algo}>

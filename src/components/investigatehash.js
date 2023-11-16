@@ -224,7 +224,7 @@ useEffect(() => {
         <div className="hashing-content">
           <div className="text-center py-6">
             <h1 className="display-1 fw-bolder mb-1 y-5">
-              <span className="text-gradient d-inline bg-light">Generate</span>
+              <span className="text-gradient d-inline bg-light">Investigate</span>
             </h1>
           </div>
 
@@ -297,7 +297,7 @@ useEffect(() => {
           </div>
 
           <div className="hashing-algorithms">
-            <h4 className="hashing-algorithms-heading text-gradient">Algorithms</h4>
+            <h4 className="hashing-algorithms-heading ">Algorithms<i className="bi bi-gear "></i></h4>
             <div className="hashing-algorithms-list">
               {algorithms.map((algo) => (
                 <div className="form-check y-5" key={algo}>
@@ -319,14 +319,14 @@ useEffect(() => {
           </div>
 
           <div className="hashed-output">
-            <h4 className="hashed-algorithm-heading text-gradient">Output 1</h4>
+            <h4 className="hashed-algorithm-heading  text-light">Output 1</h4>
             <div className="hashed-algorithm-container">
               <p className="hashed-algorithm-text">{output}</p>
             </div>
           </div>
 
           <div className="hashed-output">
-            <h4 className="hashed-algorithm-heading text-gradient">Output 2</h4>
+            <h4 className="hashed-algorithm-heading text-light">Output 2</h4>
             <div className="hashed-algorithm-container">
               <p className="hashed-algorithm-text">{output2}</p>
             </div>
