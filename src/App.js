@@ -16,7 +16,7 @@ function App() {
       <Header />
       <Informationhomepage />
       <About />
-      <Footer />
+      <Footer></Footer>
      
     </>
   );

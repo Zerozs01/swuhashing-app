@@ -4,10 +4,10 @@ import Footer from'../components/Footer'
 import Signin from'../components/Signin'
 function Login() {
   return (
-    <> <Header></Header>
+    <>   <Header />
     <Signin />
    
-   <Footer />
+   <Footer></Footer>
     </>
   )
 }
