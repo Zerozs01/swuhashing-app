@@ -32,7 +32,7 @@ const Signin = () => {
     console.log(hashedPassword);
     window.localStorage.setItem('login', JSON.stringify({ email: username,hashedEmail, hashedPassword }));
     console.log("account create success");
-    Axios.post('http://localhost:3001/usersystem', {
+    Axios.post('https://swu-hashing1.web.app/Login', {
       username: username,
       email: hashedEmail,
       password: hashedPassword
@@ -44,6 +44,7 @@ const Signin = () => {
       }])
     });
   };
+ 
 
   const LoginForm = (e) => {
     e.preventDefault();
@@ -102,7 +103,7 @@ if (username === username1) {
   };
 
   const getusersystem = () => {
-    Axios.get('http://localhost:3001/usersystem').then((response) => { setusersystem(response.data); });
+    Axios.get('https://swu-hashing1.web.app/Login').then((response) => { setusersystem(response.data); });
   }
 
   return (
