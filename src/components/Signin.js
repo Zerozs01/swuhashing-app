@@ -49,7 +49,7 @@ const Signin = () => {
     e.preventDefault();
    const usernamee = usernameInputRef.current.value;
   
-   const usertype = username;
+   const usertype = usernamee;
     const email = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
 
