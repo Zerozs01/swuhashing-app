@@ -32,7 +32,7 @@ const Signin = () => {
     console.log(hashedPassword);
     window.localStorage.setItem('login', JSON.stringify({ email: username,hashedEmail, hashedPassword }));
     console.log("account create success");
-    Axios.post('http://localhost:3001/usersystem', {
+    Axios.post('http://localhost:3001/swu-hashing-portal', {
       username: username,
       email: hashedEmail,
       password: hashedPassword
