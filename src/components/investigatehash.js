@@ -219,7 +219,7 @@ useEffect(() => {
 }, [output, output2]);
 
   return (
-    <section className="x-5">
+    <section className="x-5 ">
       <div className="hashing-container text-light px-1 mb-1">
         <div className="hashing-content">
           <div className="text-center py-6">

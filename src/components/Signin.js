@@ -47,9 +47,8 @@ const Signin = () => {
 
   const LoginForm = (e) => {
     e.preventDefault();
-   const usernamee = usernameInputRef.current.value;
+   
   
-   const usertype = username;
     const email = emailInputRef.current.value;
     const password = passwordInputRef.current.value;
 
@@ -63,18 +62,22 @@ const Signin = () => {
       console.log("User not found. Please sign up first.");
       return;
     }
-       
+    const username = usernameInputRef.current.value;
+const username1 = usernameInputRef.current.value;
+
+if (username === username1) {
+  console.log("Username match!");
+} else {
+  console.log("Username doesn't match!");
+}
+
+
+    
     const getHashedEmail = storedData.hashedEmail;
     const getHashedPassword = storedData.hashedPassword;
     
    
-    if ( usernamee === usertype)  {
-      console.log("Username match!");
-    } else {
-      
-     
-    console.log("Username doesn't match!");
-    }
+   
 
     bcrypt.compare(email, getHashedEmail, function (error, isMatch) {
       if (error) {
@@ -104,34 +107,37 @@ const Signin = () => {
 
   return (
     <div>
-      <section className="py-5">
+      <section className="py-5 form-box">
         <div className="container px-5">
           <div className="bg-light rounded-4 py-5 px-4 px-md-5 text-center">
           <div className="mb-3">
-              <div className="text-gradient fw-bold">Username</div><br />
+              <div className="text-gradient fw-bold"><i className="bi bi-person"></i>Username</div><br />
               <input
                 type="username"
                 placeholder="username"
                 ref={usernameInputRef}
-                style={{ padding: '15px', borderRadius: '10px', margin: '10px' }}
+                style={{ padding: '15px', borderRadius: '10px', margin: "10px" }}
+                className="form-control y-5"
               />
             </div>
             <div className="mb-3">
-              <div className="text-gradient fw-bold">Email</div><br />
+              <div className="text-gradient fw-bold"> <i className="bi bi-envelope"></i>Email</div><br />
               <input
                 type="email"
                 placeholder="email"
                 ref={emailInputRef}
                 style={{ padding: '15px', borderRadius: '10px', margin: '10px' }}
+                className="form-control y-5"
               />
             </div>
             <div className="mb-3">
-              <div className="text-gradient fw-bold">Password</div><br />
+              <div className="text-gradient fw-bold"><i className=" bi bi-key">Password</i></div><br />
               <input
                 type="password"
                 placeholder="password"
                 ref={passwordInputRef}
                 style={{ padding: '15px', borderRadius: '10px', margin: '10px' }}
+                className="form-control y-5"
               />
             </div>
 
@@ -157,11 +163,11 @@ const Signin = () => {
               </button>
               {usersystem.map((val, key) => {
                 return (
-                  <div className="card" key={key}>
+                  <div className="card form-control y-5" key={key}>
                     <div className="text-center card-body">
-                      <p className="card-text">Username: {val.username}</p>
-                      <p className="card-text">Email: {val.email}</p>
-                      <p className="card-text">password: {val.password}</p>
+                      <p className="card-text fw-bold">Username:<span className='text-gradient'>{val.username}</span> </p>
+                      <p className="card-text ">Email:<span className='text-gradient'>{val.email}</span> </p>
+                      <p className="card-text">password:<span className='text-gradient'>{val.password}</span> </p>
                     </div>
                   </div>
                 )
