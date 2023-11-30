@@ -30,7 +30,10 @@ export default function HashingForm() {
         }
 
         if (fileInput) {
-          result = await hashFileContent(fileInput, algorithm);
+          const fileContent = await readFileContent(fileInputRef.current);
+          result = await hashText(fileContent, algorithm);
+          // ลบข้อมูลเก่าในช่อง Input1 เมื่อมีการใส่ไฟล์ใหม่
+          setTextInput('');
         }
       }
 
@@ -52,7 +55,10 @@ export default function HashingForm() {
         }
 
         if (fileInput2) {
-          result = await hashFileContent(fileInput2, algorithm);
+          const fileContent = await readFileContent(fileInputRef2.current);
+          result = await hashText(fileContent, algorithm);
+          // ลบข้อมูลเก่าในช่อง Input2 เมื่อมีการใส่ไฟล์ใหม่
+          setTextInput2('');
         }
       }
 
@@ -89,7 +95,6 @@ export default function HashingForm() {
 
   const handleFileInput = async (e, inputNumber) => {
     const files = e.target.files;
-    let folderHash = '';
 
     for (let i = 0; i < files.length; i++) {
       const fr = new FileReader();
@@ -99,24 +104,18 @@ export default function HashingForm() {
 
         if (inputNumber === 1) {
           setFileInput(files[i].name);
-          setOutput(result);  
+          setOutput(result);
+          // ลบข้อมูลเก่าในช่อง Input1 เมื่อมีการใส่ไฟล์ใหม่
           setTextInput('');
         } else if (inputNumber === 2) {
           setFileInput2(files[i].name);
           setOutput2(result);
+          // ลบข้อมูลเก่าในช่อง Input2 เมื่อมีการใส่ไฟล์ใหม่
           setTextInput2('');
         }
-
-        folderHash += result + '\n';
       };
 
       fr.readAsText(files[i]);
-    }
-
-    if (inputNumber === 1) {
-      setOutput(folderHash);
-    } else if (inputNumber === 2) {
-      setOutput2(folderHash);
     }
   };
 
@@ -132,7 +131,10 @@ export default function HashingForm() {
       }
 
       if (fileInput) {
-        result = await hashFileContent(fileInput, value);
+        const fileContent = await readFileContent(fileInputRef.current);
+        result = await hashText(fileContent, value);
+        // ลบข้อมูลเก่าในช่อง Input1 เมื่อมีการเปลี่ยนแปลง Algorithm
+        setTextInput('');
       }
     }
 
@@ -149,7 +151,10 @@ export default function HashingForm() {
       }
 
       if (fileInput2) {
-        result = await hashFileContent(fileInput2, value);
+        const fileContent = await readFileContent(fileInputRef2.current);
+        result = await hashText(fileContent, value);
+        // ลบข้อมูลเก่าในช่อง Input2 เมื่อมีการเปลี่ยนแปลง Algorithm
+        setTextInput2('');
       }
     }
 
@@ -191,32 +196,35 @@ export default function HashingForm() {
     }
   };
 
-  const hashFileContent = async (content, algo) => {
-    switch (algo) {
-      case 'sha1':
-        return await sha1(content);
-      case 'sha256':
-        return await sha256(content);
-      case 'sha384':
-        return await sha384(content);
-      case 'sha512':
-        return await sha512(content);
-      default:
-        return '';
-    }
+  const readFileContent = (fileInputRef) => {
+    return new Promise((resolve, reject) => {
+      const file = fileInputRef.files[0];
+      const fr = new FileReader();
+
+      fr.onload = () => {
+        resolve(fr.result);
+      };
+
+      fr.onerror = (error) => {
+        reject(error);
+      };
+
+      fr.readAsText(file);
+    });
   };
+
   // เพิ่ม State สำหรับเก็บผลลัพธ์ของการตรวจสอบ
-const [isMatching, setIsMatching] = useState(false);
+  const [isMatching, setIsMatching] = useState(false);
 
-// ฟังก์ชั่นที่จะใช้ในการตรวจสอบว่า Output 1 และ Output 2 ตรงกันหรือไม่
-const checkMatching = () => {
-  setIsMatching(output === output2);
-};
+  // ฟังก์ชั่นที่จะใช้ในการตรวจสอบว่า Output 1 และ Output 2 ตรงกันหรือไม่
+  const checkMatching = () => {
+    setIsMatching(output === output2);
+  };
 
-// เรียกใช้ฟังก์ชั่น checkMatching เมื่อมีการเปลี่ยนแปลงใน output หรือ output2
-useEffect(() => {
-  checkMatching();
-}, [output, output2]);
+  // เรียกใช้ฟังก์ชั่น checkMatching เมื่อมีการเปลี่ยนแปลงใน output หรือ output2
+  useEffect(() => {
+    checkMatching();
+  }, [output, output2]);
 
   return (
     <section className="x-5 ">
@@ -331,19 +339,19 @@ useEffect(() => {
               <p className="hashed-algorithm-text">{output2}</p>
             </div>
           </div>
-         
- <div className="check-matching">
-  <button
-    type="button"
-    className={`btn ${isMatching ? 'btn-success' : 'btn-danger'}`}
-    onClick={checkMatching}
-  >
-    Check Matching :
-  </button>
-  <span className={`matching-result ${isMatching ? 'text-success' : 'text-danger'}`}>
-    {isMatching ? 'Matching' : 'Not Matching'}
-  </span>
-</div>
+
+          <div className="check-matching">
+            <button
+              type="button"
+              className={`btn ${isMatching ? 'btn-success' : 'btn-danger'}`}
+              onClick={checkMatching}
+            >
+              Check Matching :
+            </button>
+            <span className={`matching-result ${isMatching ? 'text-success' : 'text-danger'}`}>
+              {isMatching ? 'Matching' : 'Not Matching'}
+            </span>
+          </div>
         </div>
       </div>
     </section>

@@ -5,6 +5,7 @@ import App from './App';
 import Investigate from'./pages/Investigate';
 import Generate from'./pages/Generate';
 import Login from'./pages/Login';
+import FileUploader from './pages/encrypt';
 
 import reportWebVitals from './reportWebVitals';
 import {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/Generate",
     element: <Generate />,
+  },
+  {
+    path: "/encrypt",
+    element: <FileUploader />,
   },
   {
     path: "/Login",

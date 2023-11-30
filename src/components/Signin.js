@@ -1,4 +1,4 @@
-/** @format */
+
 
 import React, { useRef, useState } from "react";
 import bcrypt from "bcryptjs";
@@ -159,7 +159,7 @@ const Signin = () => {
             <div className="mb-3">
               <div className="text-gradient fw-bold">
                 {" "}
-                <i className="bi bi-envelope"></i>Email
+                <i className="bi bi-envelope"></i>Email<br></br>(const hashedEmail = bcrypt.hashSync(email, 10);)
               </div>
               <br />
               <input
@@ -176,7 +176,7 @@ const Signin = () => {
             </div>
             <div className="mb-3">
               <div className="text-gradient fw-bold">
-                <i className=" bi bi-key">Password</i>
+                <i className=" bi bi-key">Password<br></br>(const hashedPassword = bcrypt.hashSync(password, 10);)</i>
               </div>
               <br />
               <input
