@@ -5,7 +5,7 @@ import Investigate1 from '../components/Investigate1'
 import Hashing from '../components/investigatehash' // hashing component
 
 function Investigate() {
-  return (<> <Header></Header><br></br>
+  return (<>  <Header />
   <Hashing />
   <Investigate1 />
    <Footer></Footer>

@@ -6,7 +6,7 @@ import Generatepj2 from '../components/Generatepj2'
 import Hashing from '../components/hashing' // hashing component
 function Generate() {
   return (<>
-  <Header></Header>
+   <Header />
   <Hashing />
    
     <Generatepj2></Generatepj2>
